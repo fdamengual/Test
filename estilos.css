@@ -1,0 +1,101 @@
+body {
+  overflow-x: hidden;
+  padding: 50px;
+  
+}
+#cabecera {
+  margin: 0px auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 3%;
+}
+#contenido {
+  width: 100%;
+  margin-top: 50px;
+
+}
+
+.divTop {
+  width: 98%;
+  min-width: 350px;
+  margin: 0.46%;
+  float: left;
+  height: 455px;
+  min-height: 350px;
+
+  float: left;
+  border: 1px solid salmon;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.imgTop .ui-resizable-handle {
+  margin-right: 20px;
+}
+#imgTop {
+  height: 350px;
+  width: 98%;
+}
+.divTop #canvas1 {
+
+  min-height: 340px !important;
+  width: 100%;
+  padding-bottom: 22%;
+
+
+ 
+}
+.titulo {
+  border: 2px solid;
+  border-radius: 30px;
+}
+#imagenes {
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  overflow-wrap: auto;
+  display: flexbox;
+  width: 100%;
+  justify-content: center;
+}
+#imagenes #canvas2,
+#canvas3,
+#canvas4,
+#canvas5,
+#canvas6,
+#canvas7 {
+  height: 100% !important;
+  width: 100%;
+}
+
+#img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.divCenter {
+  height: 455px;
+  min-width: 200px;
+  min-height: 200px;
+  width: 32%;
+  margin: 0.46%;
+  float: left;
+  border: 1px solid salmon;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.divButtom {
+  height: 300px;
+  min-width: 300px;
+  min-height: 200px;
+  width: 32%;
+  margin: 0.46%;
+  float: left;
+  border: 1px solid salmon;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.textContenido {
+  text-align: center;
+  padding: 10px;
+}
