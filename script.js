@@ -4,8 +4,8 @@ $(".imgGrande").resizable();
 
 $(function () {
     $(".divTop").resizable({
-        minWidth: 10,
-        minHeight: 300
+        minWidth: 200,
+        minHeight: 200
     });
     $(".img2").resizable({
         minWidth: 10,
