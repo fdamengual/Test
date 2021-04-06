@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fdamengual/Test1.git"
+    "url": "git+https://github.com/fdamengual/Test.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fdamengual/Test1/issues"
   },
-  "homepage": "https://github.com/fdamengual/Test1#readme"
+  "homepage": "https://github.com/fdamengual/Test#readme"
 }
