@@ -33,6 +33,7 @@ $(function () {
     });
     $("#carouselCuadro1").carousel('pause');
     $("#carouselCuadro6").carousel('pause');
+    $("#carouselCuadro4").carousel('pause');
     $("#carouselCuadro3").carousel('pause');
 });
 // Pausar carrouseles
