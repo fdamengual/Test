@@ -134,54 +134,62 @@ $(function () {
     // Graficos cuadrado 4
     var ctx = document.getElementById("canvas4").getContext('2d');
     var myChart = new Chart(ctx, {
-        type: 'radar',
+        type: 'line',
         data: {
-            labels: [
-                'Comer',
-                'Beber',
-                'Dormir',
-                'Diseñar',
-                'Codificar',
-                'Ciclar',
-                'Correr'
-            ],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [15, 32, 50, 23, 75, 50, 40],
-                fill: true,
-                backgroundColor: 'rgba(125, 40, 90, 0.7)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
-            }, {
-                label: 'My Second Dataset',
-                data: [50, 48, 40, 75, 60, 50, 70],
-                fill: true,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(54, 162, 235)'
-            }]
-        },
-        options: {
-            elements: {
-                line: {
-                    borderWidth: 3
-                }
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+            datasets: [
+                {
+                    label: 'My First dataset',
+                    data: [31, 58, 62, 95, 34, -54],
+                    borderColor: 'rgb(191, 97, 198,0.5)',
+                    backgroundColor: 'rgb(191, 97, 198,0.5)',
+                    fill: true
+                },
+                {
+                    label: 'My Second dataset',
+                    data: [-23, 10, 25, 90, -16, 42],
+                    borderColor: 'rgb(206, 15, 243,0,5)',
+                    backgroundColor: 'rgb(206, 15, 243,0,5)',
+                    fill: true
+                },
+                {
+                    label: 'My Third dataset',
+                    data: [54, 61, -43, -16, 23, 40],
+                    borderColor: "rgb(71, 227, 77,0.3)",
+                    backgroundColor: "green",
+                    fill: true
+                }],
+            plugins: {
+                title: {
+                    display: true,
+                    text: (ctx) => 'Chart.js Line Chart - stacked=' + ctx.chart.options.scales.y.stacked
+                },
+                tooltip: {
+                    mode: 'index'
+                },
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
             },
             scales: {
-                r: {
-                    suggestedMin: 50,
-                    suggestedMax: 80
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                },
+                y: {
+                    stacked: true,
+                    title: {
+                        display: true,
+                        text: 'Value'
+                    }
                 }
             }
         }
     });
-
     var ctx = document.getElementById("canvas5").getContext('2d');
     var myChart = new Chart(ctx, {
         type: "line",
