@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./contenido.css"
 import { Carousel } from 'react-responsive-carousel';
-import { Resizable } from 're-resizable';
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Grafico from "../componentes/graficos/Grafico"
