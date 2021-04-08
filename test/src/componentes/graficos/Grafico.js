@@ -5,46 +5,51 @@ class Graficos extends React.Component {
     constructor(props) {
         super(props);
         this.canvasRef = React.createRef();
+        console.log(props.data)
     }
 
     componentDidUpdate() {
-        this.myChart.data.labels = ["casa", "Barco", "receta"];
-        this.myChart.data.datasets[0].data = [200, 57, 100];
-        this.myChart.update();
+        if (this.props.data) {
+            this.myChart.data.labels = this.props.data.labels;
+            this.myChart.data.datasets[0].data = this.props.data.type;
+            this.myChart.update();
+        }
     }
 
     componentDidMount() {
-
-        this.myChart = new Chart(this.canvasRef.current, {
-            type: "pie",
-            options: {
-                maintainAspectRatio: false,
-                animation: {
-                    easing: "easeInOutElastic",
-                    duration: 1300,
-                },
-                scales: {
-                    yAxes: [
-                        {
-                            ticks: {
-                                min: 0
+        if (this.props.data) {
+            this.myChart = new Chart(this.canvasRef.current, {
+                type: this.props.data.type,
+                options: {
+                    maintainAspectRatio: false,
+                    animation: {
+                        easing: "easeInOutElastic",
+                        duration: 1300,
+                    },
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    min: 0
+                                }
                             }
-                        }
-                    ],
+                        ],
+                    }
+                },
+                data: {
+                    labels: this.props.data.labels,
+                    datasets: [{
+                        label: this.props.data.label,
+                        data: this.props.data.data,
+                        backgroundColor: this.props.data.colores,
+                    }]
                 }
-            },
-            data: {
-                labels: ["casa", "Barco", "receta"],
-                datasets: [{
-                    label: "Marina",
-                    data: [200, 57, 100],
-                    backgroundColor: ["red", "blue", "orange"],
-                }]
-            }
-        });
+            });
+        }
     }
 
     render() {
+        if (this.props.data == null) return (<div>Cargando</div>)
         return (
             <canvas ref={this.canvasRef} />
         );

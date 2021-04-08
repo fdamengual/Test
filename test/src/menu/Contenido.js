@@ -10,26 +10,26 @@ export default function Contenido() {
     const [dataCharts, setDataCharts] = useState(null)
 
     useEffect(() => {
-        axios({
-            headers: {
+        getData()
 
-                "Access-Control-Allow-Headers": "*",
-                "Access-Control-Allow-Origin": "*",
-                // "Access-Control-Request-Method": "GET",
-                // "Access-Control-Request-Headers": "Content-Type, Accept",
-                // "Origin": "https://localhost:44326"
+    }, [])
 
-            },
+    const getData = async () => {
+        await axios({
+
             method: "get",
 
             url: `https://localhost:44326/api/chart`,
 
             responseType: "json"
         }).then((response) => {
-
+            console.log(response.data)
             setDataCharts(response.data)
         })
-    }, [])
+    }
+
+    if (dataCharts === null)
+        return (<div>Cargando</div>)
 
     return (
 
@@ -39,7 +39,7 @@ export default function Contenido() {
             {/* Cuadrado 1 */}
             <Carousel className="divTop" showThumbs={false}  >
                 <div className={"divGraf"} >
-                    <Grafico className={""} data={dataCharts != null && dataCharts[0]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[0] : dataCharts} />
 
                 </div>
                 <div>
@@ -55,7 +55,7 @@ export default function Contenido() {
 
                 </div>
                 <div className={"divGraf"}>
-                    <Grafico className={""} data={dataCharts != null && dataCharts[1]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[1] : dataCharts} />
 
                 </div>
             </Carousel>
@@ -66,7 +66,7 @@ export default function Contenido() {
 
                 </div>
                 <div className={"divGraf"} >
-                    <Grafico className={""} data={dataCharts != null && dataCharts[2]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[2] : dataCharts} />
 
                 </div>
             </Carousel>
@@ -77,7 +77,7 @@ export default function Contenido() {
 
                 </div>
                 <div className={"divGraf"} >
-                    <Grafico className={""} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[3] : dataCharts} />
 
                 </div>
             </Carousel>
@@ -88,7 +88,7 @@ export default function Contenido() {
 
                 </div>
                 <div className={"divGraf"} >
-                    <Grafico className={""} data={dataCharts != null && dataCharts[3]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[3] : dataCharts} />
 
                 </div>
             </Carousel>
@@ -96,7 +96,7 @@ export default function Contenido() {
 
             <Carousel className="divCenter" autoPlay={true} showThumbs={false}>
                 <div className={"divGraf"} >
-                    <Grafico className={""} data={dataCharts != null && dataCharts[0]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[0] : dataCharts} />
 
                 </div>
                 <div>
@@ -112,14 +112,14 @@ export default function Contenido() {
 
                 </div>
                 <div className={"divGraf"}>
-                    <Grafico className={""} data={dataCharts != null && dataCharts[0]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[0] : dataCharts} />
 
                 </div>
             </Carousel>
             {/* Cuadrado 8 */}
             <Carousel className="divTop" showThumbs={false}  >
                 <div className={"divGraf"} >
-                    <Grafico className={""} data={dataCharts != null && dataCharts[0]} />
+                    <Grafico className={""} data={dataCharts != null ? dataCharts[0] : dataCharts} />
 
                 </div>
                 <div>
