@@ -21,7 +21,7 @@ export default function Contenido() {
 
             method: "get",
 
-            url: `https://localhost:5001/api/chart`,
+            url: `http://localhost:5001/api/chart`,
 
             responseType: "json"
         }).then((response) => {
