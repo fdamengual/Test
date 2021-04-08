@@ -11,8 +11,8 @@ export default function Contenido() {
     const [dataCharts, setDataCharts] = useState(null)
     const [dataImgs, setDataImgs] = useState(null)
     useEffect(() => {
-        setTimeout(() => { getDataImg(); getDataChart(); }, 1400)
-
+        setTimeout(() => { getDataImg(); }, 1400)
+        setTimeout(() => { getDataChart(); }, 2000)
 
     }, [])
 
