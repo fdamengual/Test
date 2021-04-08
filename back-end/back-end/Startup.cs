@@ -27,6 +27,7 @@ namespace back_end
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<Repositorio.IDataEnMemoria, Repositorio.DataEnMemoria>();
+            
             services.AddCors();
 
             services.AddControllers();

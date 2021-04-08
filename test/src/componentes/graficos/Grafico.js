@@ -18,9 +18,69 @@ class Graficos extends React.Component {
     }
 
     componentDidMount() {
-        let random = Math.floor(Math.random() * 5)
-        console.log(random)
-        if (this.props.data.type == "line") {
+        if (this.props.data.type == "radar") {
+            let random = Math.floor(Math.random() * 4)
+            console.log(random)
+            this.myChart = new Chart(this.canvasRef.current, {
+                type: this.props.data.type,
+                options: {
+                    maintainAspectRatio: this.props.className == "divTopPequeño" ? false : true,
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    }
+                },
+                data: {
+                    labels: this.props.data.labels,
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: this.props.data.data,
+                        fill: true,
+                        backgroundColor: this.props.data.colores[random],
+                        borderColor: this.props.data.colores[random],
+                        pointBackgroundColor: 'rgb(255, 99, 132)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: this.props.data.colores[random]
+                    }]
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: (ctx) => 'Chart.js Line Chart - stacked=' + ctx.chart.options.scales.y.stacked
+                    },
+                    tooltip: {
+                        mode: 'index'
+                    },
+                },
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+
+            });
+        }
+
+        else if (this.props.data.type == "line") {
+            let random = Math.floor(Math.random() * 5)
+            console.log(random)
             this.myChart = new Chart(this.canvasRef.current, {
                 type: "line",
                 data: {
@@ -37,7 +97,8 @@ class Graficos extends React.Component {
 
                 },
                 options: {
-                    maintainAspectRatio: false,
+                    responsive: true,
+                    maintainAspectRatio: this.props.className == "divCenter" ? true : false,
                     animation: {
                         easing: "easeInOutElastic",
                         duration: 1300,
@@ -75,11 +136,12 @@ class Graficos extends React.Component {
                 }
             });
         }
+
         else {
             this.myChart = new Chart(this.canvasRef.current, {
                 type: this.props.data.type,
                 options: {
-                    maintainAspectRatio: false,
+                    maintainAspectRatio: this.props.className == "divCenter" ? true : false,
                     animation: {
                         easing: "easeInOutElastic",
                         duration: 1300,

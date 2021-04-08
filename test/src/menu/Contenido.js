@@ -9,14 +9,14 @@ import ReactLoading from 'react-loading';
 
 export default function Contenido() {
     const [dataCharts, setDataCharts] = useState(null)
-
+    const [dataImgs, setDataImgs] = useState(null)
     useEffect(() => {
-        setTimeout(() => { getData() }, 2000)
+        setTimeout(() => { getDataImg(); getDataChart(); }, 1400)
 
 
     }, [])
 
-    const getData = async () => {
+    const getDataChart = async () => {
         await axios({
 
             method: "get",
@@ -25,9 +25,24 @@ export default function Contenido() {
 
             responseType: "json"
         }).then((response) => {
-            console.log(response.data)
+
             setDataCharts(response.data)
-        })
+        }).catch((error) => { console.log(error) })
+
+    }
+    const getDataImg = async () => {
+        await axios({
+
+            method: "get",
+
+            url: `http://localhost:5001/api/img`,
+
+            responseType: "json"
+        }).then((response) => {
+
+            setDataImgs(response.data)
+        }).catch((error) => { console.log(error) })
+
     }
 
     // if (dataCharts === null)
@@ -45,9 +60,10 @@ export default function Contenido() {
 
                 </div > : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
                 <div>
-                    <img className="img" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
+                    <img className="imgTopButtom" src={dataImgs ? dataImgs[4].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
 
                 </div>
+
 
             </Carousel>
             {/* Cuadrado 2 */}
@@ -61,7 +77,7 @@ export default function Contenido() {
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
                 </div>
                 <div>
-                    <img className="img" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
+                    <img className="imgTopButtom" src={dataImgs ? dataImgs[1].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
 
                 </div>
 
@@ -71,12 +87,12 @@ export default function Contenido() {
                 <div className={"divGraf"} >
 
                     {dataCharts ? <div className={"divGraf"} >
-                        <Grafico className={""} data={dataCharts != null ? dataCharts[2] : dataCharts} />
+                        <Grafico className={"divCenter"} data={dataCharts != null ? dataCharts[2] : dataCharts} />
 
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
                 </div>
                 <div>
-                    <img className="imgCenter" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
+                    <img className="imgCenter" src={dataImgs ? dataImgs[2].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
 
                 </div>
 
@@ -84,12 +100,11 @@ export default function Contenido() {
             {/* Cuadrado 4 */}
             <Carousel className="divCenter" infiniteLoop={true} interval={3000} autoPlay={true} showThumbs={false}>
                 <div>
-                    <img className="imgCenter" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
-
+                    <img className="imgCenter" src={dataImgs ? dataImgs[3].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
                 </div>
                 <div className={"divGraf"} >
                     {dataCharts ? <div className={"divGraf"} >
-                        <Grafico className={""} data={dataCharts != null ? dataCharts[2] : dataCharts} />
+                        <Grafico className={"divCenter"} data={dataCharts != null ? dataCharts[1] : dataCharts} />
 
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
                 </div>
@@ -97,12 +112,11 @@ export default function Contenido() {
             {/* Cuadrado 5 */}
             <Carousel className="divCenter" infiniteLoop={true} showThumbs={false}>
                 <div>
-                    <img className="imgCenter" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
-
+                    <img className="imgCenter" src={dataImgs ? dataImgs[4].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
                 </div>
                 <div className={"divGraf"} >
                     {dataCharts ? <div className={"divGraf"} >
-                        <Grafico className={""} data={dataCharts != null ? dataCharts[2] : dataCharts} />
+                        <Grafico className={"divCenter"} data={dataCharts != null ? dataCharts[5] : dataCharts} />
 
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
 
@@ -113,26 +127,24 @@ export default function Contenido() {
             <Carousel className="divCenter" infiniteLoop={true} interval={3000} autoPlay={true}>
                 <div className={"divGraf"} >
                     {dataCharts ? <div className={"divGraf"} >
-                        <Grafico className={""} data={dataCharts != null ? dataCharts[4] : dataCharts} />
+                        <Grafico className={"divCenter"} data={dataCharts != null ? dataCharts[4] : dataCharts} />
 
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
 
                 </div>
                 <div>
-                    <img className="imgCenter" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
-
+                    <img className="imgCenter" src={dataImgs ? dataImgs[0].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
                 </div>
 
             </Carousel>
             {/* Cuadrado 7 */}
             <Carousel className="divTopPequeño" infiniteLoop={true} interval={3000} autoPlay={true} showThumbs={false} >
                 <div>
-                    <img className="img" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
-
+                    <img className="imgTopButtom" src={dataImgs ? dataImgs[3].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
                 </div>
                 <div className={"divGraf"}>
                     {dataCharts ? <div className={"divGraf"} >
-                        <Grafico className={""} data={dataCharts != null ? dataCharts[1] : dataCharts} />
+                        <Grafico className={"divTopPequeño"} data={dataCharts != null ? dataCharts[6] : dataCharts} />
 
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
 
@@ -147,8 +159,7 @@ export default function Contenido() {
                     </div> : <div className="loadingDiv"><ReactLoading type={"spin"} color={"blue"} /> <p>Cargando</p></div>}
                 </div>
                 <div>
-                    <img className="img" src="https://i2.wp.com/academy.leewayweb.com/wp-content/uploads/2019/05/dashboard.png?fit=3251%2C1972&ssl=1" />
-
+                    <img className="imgTopButtom" src={dataImgs ? dataImgs[4].url : "https://www.elegantthemes.com/blog/wp-content/uploads/2017/08/featuredimage.jpg"} />
                 </div>
 
             </Carousel>

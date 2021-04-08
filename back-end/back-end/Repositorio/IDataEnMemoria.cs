@@ -9,5 +9,6 @@ namespace back_end.Repositorio
     public interface IDataEnMemoria
     {
         List<Chart> ObtenerCharts();
+        List<Img> ObtenerImgs();
     }
 }
